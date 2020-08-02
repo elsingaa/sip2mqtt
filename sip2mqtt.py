@@ -96,17 +96,17 @@ def main(argv):
     parser = argparse.ArgumentParser(description='A SIP monitoring tool that publishes incoming calls with CallerID to an MQTT channel')
     requiredNamed = parser.add_argument_group('required named arguments')
 
-    requiredNamed.add_argument("-a",    "--mqtt_domain",    type=str, required=True, help="the MQTT broker domain string", default=os.environ.get('MQTT_DOMAIN', None))
-    requiredNamed.add_argument("-t",    "--mqtt_port",      type=int, required=True, help="the MQTT broker port number", default=os.environ.get('MQTT_PORT', None))
+    requiredNamed.add_argument("-a",    "--mqtt_domain",    type=str, required=False, help="the MQTT broker domain string", default=os.environ.get('MQTT_DOMAIN', None))
+    requiredNamed.add_argument("-t",    "--mqtt_port",      type=int, required=False, help="the MQTT broker port number", default=os.environ.get('MQTT_PORT', None))
     parser.add_argument(                "--mqtt_keepalive", type=int, required=False, help="the MQTT broker keep alive in seconds", default=60)
     parser.add_argument(                "--mqtt_protocol",  type=str, required=False, help="the MQTT broker protocol", default="MQTTv311", choices=['MQTTv31', 'MQTTv311'])
-    requiredNamed.add_argument("-u",    "--mqtt_username",  type=str, required=True, help="the MQTT broker username", default=os.environ.get('MQTT_USERNAME', None))
+    requiredNamed.add_argument("-u",    "--mqtt_username",  type=str, required=False, help="the MQTT broker username", default=os.environ.get('MQTT_USERNAME', None))
     requiredNamed.add_argument("-p",    "--mqtt_password",  type=str, required=False, help="the MQTT broker password", default=os.environ.get('MQTT_PASSWORD', None))
     parser.add_argument(                "--mqtt_topic",     type=str, required=False, help="the MQTT broker topic", default=os.environ.get('MQTT_TOPIC', "home/sip"))
 
-    requiredNamed.add_argument("-d",    "--sip_domain",     type=str, required=True, help="the SIP domain", default=os.environ.get('SIP_DOMAIN', None))
+    requiredNamed.add_argument("-d",    "--sip_domain",     type=str, required=False, help="the SIP domain", default=os.environ.get('SIP_DOMAIN', None))
     parser.add_argument(                "--sip_port",       type=int, required=False, help="the SIP transport port number", default=os.environ.get('SIP_PORT', 5060))
-    requiredNamed.add_argument("-n",    "--sip_username",   type=str, required=True, help="the SIP username", default=os.environ.get('SIP_USERNAME', None))
+    requiredNamed.add_argument("-n",    "--sip_username",   type=str, required=False, help="the SIP username", default=os.environ.get('SIP_USERNAME', None))
     requiredNamed.add_argument("-s",    "--sip_password",   type=str, required=False, help="the SIP password", default=os.environ.get('SIP_PASSWORD', None))
     parser.add_argument(                "--sip_display",    type=str, required=False, help="the SIP user display name", default=app_name)
 
