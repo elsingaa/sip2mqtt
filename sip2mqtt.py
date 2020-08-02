@@ -98,7 +98,7 @@ def main(argv):
 
     requiredNamed.add_argument("-a",    "--mqtt_domain",    type=str, required=False, help="the MQTT broker domain string", default=os.environ.get('MQTT_DOMAIN', None))
     requiredNamed.add_argument("-t",    "--mqtt_port",      type=int, required=False, help="the MQTT broker port number", default=os.environ.get('MQTT_PORT', None))
-    parser.add_argument(                "--mqtt_keepalive", type=int, required=False, help="the MQTT broker keep alive in seconds", default=60)
+    parser.add_argument(                "--mqtt_keepalive", type=int, required=False, help="the MQTT broker keep alive in seconds", default=os.environ.get('MQTT_KEEPALIVE',60))
     parser.add_argument(                "--mqtt_protocol",  type=str, required=False, help="the MQTT broker protocol", default="MQTTv311", choices=['MQTTv31', 'MQTTv311'])
     requiredNamed.add_argument("-u",    "--mqtt_username",  type=str, required=False, help="the MQTT broker username", default=os.environ.get('MQTT_USERNAME', None))
     requiredNamed.add_argument("-p",    "--mqtt_password",  type=str, required=False, help="the MQTT broker password", default=os.environ.get('MQTT_PASSWORD', None))
